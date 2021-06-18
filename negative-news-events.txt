@@ -1,0 +1,5 @@
+NEWS -- All the oranges in the world mysteriously go out of date at the same time.\nOrangeLTD stock decreases by 20, idle income decreases by 0.25
+NEWS -- The CEO of EggCorp is mysteriously assassinated while testing out weapons at OrangeLTD,\nEggCorp stock decreases by 5, idle income decreases by 0.05
+NEWS -- SHiTA bomb an EggCorp distribution centre and kill 300 employees.\nSHiTA leader denies any connection between humans and animals.EggCorp stock decreases by 10, idle income decreases by 0.1
+NEWS -- A social media personality posts a 40 minute vlog on their orange being the wrong colour,\nOrangeLTD stock decreases by 35, idle income decreases by 0.1
+NEWS -- A news report shows the horrors of the orange collecting industry,\nOrangeLTD stock decreases by 10, idle income decreases by 0.4
