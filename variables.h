@@ -11,6 +11,8 @@
 #include <sstream>
 #include <cstdlib>
 #include <fstream>
+#include "boost/random.hpp"
+#include "boost/generator_iterator.hpp"
 
 class stocks {
 	public:
@@ -19,6 +21,7 @@ class stocks {
 		int numberOfStocks;
 		float incomePerStock;
 
+		void update();
 		void bailout();
 
 		stocks(std::string aName, int startingValue, float startingIncomeStream, int startingNumberOfStocks = 0) {																	//constructor to initialise values for the companies.
@@ -27,6 +30,9 @@ class stocks {
 			numberOfStocks = startingNumberOfStocks;
 			incomePerStock = startingIncomeStream;
 		}
+		/*void update() {
+			money += this->incomePerStock * this->numberOfStocks;
+		}*/
 };
 
 
