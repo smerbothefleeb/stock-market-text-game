@@ -11,5 +11,6 @@
 #include <sstream>
 #include <cstdlib>
 #include <fstream>
+#include <sstream>
 #include "stocks.h"
 
