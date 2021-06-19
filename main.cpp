@@ -44,10 +44,10 @@ int main() {
 	
 	std::cout << "Companies retrieved from file: \n\n" <<
 		"Number       Name              Stock Value       Stocks Held       Maximum Stocks\n" <<
-		"--------------------------------------------------------------------------------------\n\n  ";
+		"--------------------------------------------------------------------------------------\n\n";
 
 	for (Company i_company : companiesList) {
-		std::cout << padRight((std::to_string(i_company.companyNumber)), 11) <<
+		std::cout << "  " << padRight((std::to_string(i_company.companyNumber)), 11) <<
 			padRight(i_company.companyName, 18) << padRight(std::to_string(i_company.companyStockValue), 18) <<
 			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
 	}

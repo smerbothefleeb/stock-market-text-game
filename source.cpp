@@ -1,8 +1,9 @@
 #include "variables.h"
 
 namespace fileStringOperations {
+
 	int strToInt(std::string inputString) {
-		/* Convert string to const char* then int */
+		/* Convert string to const char* then int with atoi()*/
 		return std::atoi(inputString.c_str());
 	}
 
@@ -18,6 +19,7 @@ namespace fileStringOperations {
 	}
 
 	std::vector<std::string> separateString(std::string input, char delimiter) {
+		/* Parse a delimited string into multiple smaller strings using a given delimiter, then add strings to output vector*/
 		std::vector<std::string> output;
 		std::stringstream ss(input);
 		std::string stringSection;
