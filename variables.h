@@ -12,11 +12,14 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
+#include <iomanip>
 #include "companies.h"
 
-/* Namespace for file functions - definitions in source.cpp*/
-namespace fileOperations {
-	extern int strToInt(std::string inputString);
-	extern int lineCount(std::ifstream inputFile);
-	extern std::vector<std::string> separateString(std::string input, char delimiter);
+
+/* Namespace for file/string functions - definitions in source.cpp*/
+namespace fileStringOperations {
+	 int strToInt(std::string inputString);
+	 int lineCount(std::ifstream inputFile);
+	 std::vector<std::string> separateString(std::string input, char delimiter);
+	 std::string padRight(std::string str, int size);
 }

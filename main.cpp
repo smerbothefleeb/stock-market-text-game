@@ -1,5 +1,5 @@
 #include "variables.h"
-using namespace fileOperations;
+using namespace fileStringOperations;
 std::vector<std::string> positiveNewsEvents, negativeNewsEvents;
 std::vector <int> positiveConsequences, negativeConsequences;
 std::vector <Company> companiesList;
@@ -33,8 +33,23 @@ int main() {
 	while (getline(companiesData, fileOutput)) {
 		/* Line is separated into 5 parts, with each string as the values from each company */
 		/* Then creates a new object of Company using the strings, and adds it to the vector */
+		/* CompanyNumber, CompanyName, StockValue, NumberOfStocks, MaximumStocks*/
+
 		lineOutput = separateString(fileOutput, ',');
 		Company _new(strToInt(lineOutput[0]), lineOutput[1], strToInt(lineOutput[2]), strToInt(lineOutput[3]), strToInt(lineOutput[4]));
 		companiesList.push_back(_new);
 	}
+
+	/* List companies and their current values */
+	
+	std::cout << "Companies retrieved from file: \n\n" <<
+		"Number       Name              Stock Value       Stocks Held       Maximum Stocks\n" <<
+		"--------------------------------------------------------------------------------------\n\n  ";
+
+	for (Company i_company : companiesList) {
+		std::cout << padRight((std::to_string(i_company.companyNumber)), 11) <<
+			padRight(i_company.companyName, 18) << padRight(std::to_string(i_company.companyStockValue), 18) <<
+			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
+	}
+	std::cout << "\n--------------------------------------------------------------------------------------";
 }

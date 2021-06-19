@@ -1,6 +1,6 @@
 #include "variables.h"
 
-namespace fileOperations {
+namespace fileStringOperations {
 	int strToInt(std::string inputString) {
 		/* Convert string to const char* then int */
 		return std::atoi(inputString.c_str());
@@ -26,5 +26,13 @@ namespace fileOperations {
 			output.push_back(stringSection);
 		}
 		return output;
+	}
+
+	std::string padRight(std::string str, int size) {
+		/* If the length of the string is less than the desired size, pad with spaces until it is */
+		if (str.size() < size) {
+			str = str + std::string(size - str.size(), ' ');
+		}
+		return str;
 	}
 }
