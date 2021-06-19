@@ -4,16 +4,7 @@ std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
 std::string fileOutput = "";
 
-int lineCount(std::ifstream inputFile) {
-	int numLine = 0;
-	std::string line = "";
-	while (getline(inputFile, line)) {
-		if (!(line.empty())) {
-			numLine++;
-		}
-	}
-	return numLine;
-}
+
 
 std::vector<std::string> separateString(std::string input, char delimiter) {
 	std::vector<std::string> output;

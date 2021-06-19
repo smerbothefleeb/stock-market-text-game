@@ -15,3 +15,4 @@
 #include "companies.h"
 
 extern int strToInt(std::string inputString);
+extern int lineCount(std::ifstream inputFile);
