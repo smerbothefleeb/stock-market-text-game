@@ -14,5 +14,9 @@
 #include <sstream>
 #include "companies.h"
 
-extern int strToInt(std::string inputString);
-extern int lineCount(std::ifstream inputFile);
+/* Namespace for file functions - definitions in source.cpp*/
+namespace fileOperations {
+	extern int strToInt(std::string inputString);
+	extern int lineCount(std::ifstream inputFile);
+	extern std::vector<std::string> separateString(std::string input, char delimiter);
+}

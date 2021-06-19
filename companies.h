@@ -21,7 +21,5 @@ public:
 			maximumStocks = maxStocks;
 	}
 };
-/* Extern definition in source.cpp*/
-extern std::vector <Company> companiesList;
 
 

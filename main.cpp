@@ -1,21 +1,10 @@
 #include "variables.h"
+using namespace fileOperations;
 std::vector<std::string> positiveNewsEvents, negativeNewsEvents;
 std::vector <int> positiveConsequences, negativeConsequences;
+std::vector <Company> companiesList;
 std::vector<std::string> lineOutput;
 std::string fileOutput = "";
-
-
-
-std::vector<std::string> separateString(std::string input, char delimiter) {
-	std::vector<std::string> output;
-	std::stringstream ss(input);
-	std::string stringSection;
-
-	while (getline(ss, stringSection, delimiter)) {
-		output.push_back(stringSection);
-	}
-	return output;
-}
 
 int main() {
 	srand((unsigned)time(NULL));			
