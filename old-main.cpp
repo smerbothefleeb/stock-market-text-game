@@ -26,8 +26,8 @@ minusButtonX, minusButtonY, plusButtonHeight, plusButtonWidth, plusButtonX, plus
 
 
 
-stocks EggCorp("EggCorp", 50, 0.1, 10);
-stocks OrangeLTD("OrangeLTD", 500, 10, 0);
+Company EggCorp("EggCorp", 50, 0.1, 10);
+Company OrangeLTD("OrangeLTD", 500, 10, 0);
 
 
 int main() {
@@ -128,7 +128,7 @@ string generateRandomEvents() {
 	return newsEvent;
 }
 
-void stocks::bailout() {
+void Company::bailout() {
 	if (this->companyStockValue <= 0) {
 		this->companyStockValue = 50;
 		cout << this->companyName << " went bankrupt! Their stock value hit 0, and they have been bailed out by the government. Their stock value has been reset to: " << this->companyStockValue << endl;

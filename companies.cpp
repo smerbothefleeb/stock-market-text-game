@@ -1,6 +1,6 @@
 #include "variables.h"
 
-bool stocks::belowZero() {
+bool Company::belowZero() {
 	if (companyStockValue <= 0) {
 		return true;
 	}
@@ -10,6 +10,4 @@ bool stocks::belowZero() {
 	else {
 		return false;
 	}
-
-	
 }

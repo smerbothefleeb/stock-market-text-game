@@ -12,5 +12,6 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
-#include "stocks.h"
+#include "companies.h"
 
+extern int strToInt(std::string inputString);

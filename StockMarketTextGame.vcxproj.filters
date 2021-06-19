@@ -21,7 +21,7 @@
     <ClInclude Include="variables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stocks.h">
+    <ClInclude Include="companies.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stocks.cpp">
+    <ClCompile Include="companies.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
