@@ -38,14 +38,21 @@ namespace fileStringOperations {
 		}
 		return str;
 	}
+
+	std::string uppercase(std::string str) {
+		for (int i = 0; i < str.size(); i++) {
+			str[i] = char(toupper((int)str[i]));
+		}
+		return str;
+	}
 }
 
 namespace textCommands {
 	void help() {
-		std::cout << "List of commands: \n" <<
-			"buy {x} [Company] - Buy x quantity of stocks in Company\n" <<
-			"sell {x} [Company] - Sell x quantity of stocks in Company \n" <<
-			"save - Save all data to respective files \n" <<
-			"skip - Skip the day and move to the next\n";
+		std::cout << "\nList of commands: \n\n" <<
+			" - buy {x} [Company]/[Number] - Buy x quantity of stocks in Company - Use name or number\n" <<
+			" - sell {x} [Company]/[Number] - Sell x quantity of stocks in Company - Use name or number\n" <<
+			" - save - Save all data to respective files \n" <<
+			" - skip - Skip the day and move to the next\n";
 	}
 }

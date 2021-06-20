@@ -1,10 +1,11 @@
 #include "variables.h"
 using namespace fileStringOperations;
-using namespace textCommands;
 std::vector<std::string> positiveNewsEvents, negativeNewsEvents;
 std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
 std::string fileOutput = "";
+std::string userInput = "";
+
 
 int main() {
 	srand((unsigned)time(NULL));			
@@ -42,6 +43,7 @@ int main() {
 	}
 	lineOutput.clear();
 
+
 	/* Retrieve any data associated with the user & create a new object of User */
 	getline(userData, fileOutput);
 	lineOutput = separateString(fileOutput, ',');
@@ -53,14 +55,22 @@ int main() {
 		"Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
 		std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
 		std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
-		std::string(108, '-') << "\n\n";
+		std::string(120, '-') << "\n\n";
 
 	for (Company i_company : companiesList) {
 		std::cout << "  " << padRight((std::to_string(i_company.companyNumber)), 11) <<
 			padRight(i_company.companyName, 18) << padRight(std::to_string(i_company.companyStockValue), 18) <<
 			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
 	}
-	std::cout << "\n" << std::string(108, '-');
+	std::cout << "\n" << std::string(120, '-') << "\n";
+	std::cout << "Enter command: ";
+
 
 	/* Receive user input and invoke relevant function */
+	std::cin >> userInput;
+	userInput = uppercase(userInput);
+
+	if (userInput == "HELP") {
+		textCommands::help();
+	}
 }

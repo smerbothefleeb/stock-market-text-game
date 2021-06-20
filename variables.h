@@ -25,6 +25,7 @@ namespace fileStringOperations {
 	 int lineCount(std::ifstream inputFile);
 	 std::vector<std::string> separateString(std::string input, char delimiter);
 	 std::string padRight(std::string str, int size);
+	 std::string uppercase(std::string str);
 }
 
 namespace textCommands {
