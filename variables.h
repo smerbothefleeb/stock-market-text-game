@@ -21,7 +21,8 @@ extern std::vector <Company> companiesList;
 extern User user;
 
 /* Namespace for file/string functions - definitions in source.cpp*/
-namespace fileStringOperations {
+namespace fileStringOperations 
+{
 	 int strToInt(std::string inputString);
 	 int lineCount(std::ifstream inputFile);
 	 std::vector<std::string> separateString(std::string input, char delimiter);
@@ -30,7 +31,8 @@ namespace fileStringOperations {
 	 bool hasNumber(std::string str);
 }
 
-namespace textCommands {
+namespace textCommands 
+{
 	void help();
 	void buy(int numBuy, std::string numName, double userMoney);
 	void sell(int numSell, std::string numName, double userMoney);

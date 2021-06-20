@@ -1,6 +1,7 @@
 #pragma once
 
-class User {
+class User 
+{
 public:
 	double money= 100;
 	unsigned int day = 0;
@@ -8,7 +9,8 @@ public:
 	double totalValue = 0;
 
 	void calculateValue();
-	User(double _money, int _day) {
+	User(double _money, int _day) 
+	{
 		money = _money;
 	}
 };

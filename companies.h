@@ -1,6 +1,7 @@
 #pragma once
 
-class Company {
+class Company 
+{
 public:
 	std::string companyName;
 	int companyNumber;
@@ -14,7 +15,8 @@ public:
 	void changeQuantity(int amount, double& userMoney);
 
 	Company(int _companyNumber, std::string _companyName, double _stockValue,
-		int numStocks, int maxStocks) {
+		int numStocks, int maxStocks) 
+	{
 			companyNumber = _companyNumber;
 			companyName = _companyName;
 			companyStockValue = _stockValue;
