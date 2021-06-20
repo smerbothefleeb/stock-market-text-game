@@ -13,6 +13,6 @@ bool Company::belowZero() {
 }
 
 void Company::changeQuantity(int amount, double &userMoney) {
-	userMoney -= (numberOfStocks * companyStockValue);
+	userMoney -= (amount * companyStockValue);
 	numberOfStocks += amount;
 }
