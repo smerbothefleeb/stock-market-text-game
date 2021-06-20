@@ -68,13 +68,14 @@ int main()
 	}
 	std::cout << "\n" << std::string(120, '-');
 	textCommands::help();
-	std::cout << "Enter command: ";
 
 
 	/* Receive user input and invoke relevant function */
 	while (uppercase(userInput) != "EXIT")
 	{
+		std::cout << "Enter Command: ";
 		getline(std::cin, userInput);
+		std::cout << "\n";
 		std::vector<std::string> multiString = separateString(userInput, ' ');
 
 		if (uppercase(userInput) == "HELP")
@@ -100,13 +101,15 @@ int main()
 			}
 			companyTemp.close();
 			companiesData.open("company-data.csv");
-
 			userData.close();
 			std::ofstream userTemp("user-data.csv", std::ios::out | std::ios::trunc);
 			userTemp << std::to_string(user.money) + "," + std::to_string(user.day);
 			userTemp.close();
 			userData.open("company-data.csv");
-			std::cout << "Saved data!\n";
+			std::cout << "Saved data!\n\n";
+		}
+		else {
+			std::cout << "-- Unrecognised command! --\n\n";
 		}
 	}
 	return 0;
