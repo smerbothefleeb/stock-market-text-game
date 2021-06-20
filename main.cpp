@@ -51,8 +51,7 @@ int main() {
 	user.calculateValue();
 
 	/* List companies and their current values */
-	std::cout << "Companies retrieved from file: \n\n" <<
-		"Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
+	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
 		std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
 		std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
 		std::string(120, '-') << "\n\n";
@@ -77,10 +76,9 @@ int main() {
 	}
 	else if (uppercase(multiString[0]) == "BUY") {
 		/* String is in 3 sections - The command, number of stocks, and the company/number*/
-		multiString[2] = "EggCorp";
-		if (hasNumber(multiString[2])) {
-			std::cout << "tru";
-		}
 		textCommands::buy(strToInt(multiString[1]), multiString[2], user.money);
+	}
+	else if (uppercase(multiString[0]) == "SELL") {
+
 	}
 }

@@ -74,7 +74,7 @@ namespace textCommands {
 					companiesList[i].changeQuantity(numBuy, userMoney);
 					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" + 
 						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
-						companiesList[i].companyStockValue << "\nTotal expenditure: \x9C" <<
+						companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
 						(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
 				}
 			}
@@ -85,12 +85,39 @@ namespace textCommands {
 					companiesList[i].changeQuantity(numBuy, userMoney);
 					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
 						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
-						companiesList[i].companyStockValue << "\nTotal expenditure: \x9C" <<
+						companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
 						(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
 				}
 			}
 
 		}
 
+	}
+
+	void sell(int numSell, std::string numName, double userMoney) {
+		/* If the call uses the company name */
+		if (fileStringOperations::hasNumber(numName) == false) {
+			for (int i = 0; i < companiesList.size(); i++) {
+				if (fileStringOperations::uppercase(companiesList[i].companyName) == fileStringOperations::uppercase(numName)) {
+					companiesList[i].changeQuantity(-numSell, userMoney);
+					std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
+						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
+						companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
+						(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+				}
+			}
+		}
+		else {
+			for (int i = 0; i < companiesList.size(); i++) {
+				if (companiesList[i].companyNumber == fileStringOperations::strToInt(numName)) {
+					companiesList[i].changeQuantity(-numSell, userMoney);
+					std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
+						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
+						companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
+						(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+				}
+			}
+
+		}
 	}
 }
