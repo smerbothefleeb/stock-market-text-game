@@ -39,3 +39,13 @@ namespace fileStringOperations {
 		return str;
 	}
 }
+
+namespace textCommands {
+	void help() {
+		std::cout << "List of commands: \n" <<
+			"buy {x} [Company] - Buy x quantity of stocks in Company\n" <<
+			"sell {x} [Company] - Sell x quantity of stocks in Company \n" <<
+			"save - Save all data to respective files \n" <<
+			"skip - Skip the day and move to the next\n";
+	}
+}

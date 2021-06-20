@@ -26,3 +26,7 @@ namespace fileStringOperations {
 	 std::vector<std::string> separateString(std::string input, char delimiter);
 	 std::string padRight(std::string str, int size);
 }
+
+namespace textCommands {
+	void help();
+}
