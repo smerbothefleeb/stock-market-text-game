@@ -11,6 +11,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <fstream>
+#include <regex>
 #include <sstream>
 #include <iomanip>
 #include "companies.h"
@@ -26,9 +27,11 @@ namespace fileStringOperations {
 	 std::vector<std::string> separateString(std::string input, char delimiter);
 	 std::string padRight(std::string str, int size);
 	 std::string uppercase(std::string str);
+	 bool hasNumber(std::string str);
 }
 
 namespace textCommands {
 	void help();
-	void buy();
+	void buy(int numBuy, std::string numName, double userMoneybuy);
 }
+

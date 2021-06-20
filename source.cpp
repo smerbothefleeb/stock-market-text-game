@@ -45,6 +45,16 @@ namespace fileStringOperations {
 		}
 		return str;
 	}
+
+	bool hasNumber(std::string str) {
+		/* Checks through a string and tests every digit to find a number*/
+		for (char const _c : str) {
+			if (std::isdigit(_c) == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
 
 namespace textCommands {
@@ -56,7 +66,18 @@ namespace textCommands {
 			" - skip - Skip the day and move to the next\n\n";
 	}
 
-	void buy() {
+	void buy(int numBuy, std::string numName, double userMoney) {
+		/* If the call uses the company name */
+		if (fileStringOperations::hasNumber(numName) == false) {
+			for (int i = 0; i < companiesList.size(); i++) {
+				if (companiesList[i].companyName == numName) {
+					companiesList[i].changeQuantity(numBuy, userMoney);
+					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + " at \x9C" <<
+						companiesList[i].companyStockValue << "\nTotal expenditure: \x9C" <<
+						(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+				}
+			}
+		}
 
 	}
 }

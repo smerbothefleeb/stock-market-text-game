@@ -68,10 +68,19 @@ int main() {
 
 
 	/* Receive user input and invoke relevant function */
-	std::cin >> userInput;
-	userInput = uppercase(userInput);
+	getline(std::cin, userInput);
+	std::vector<std::string> multiString = separateString(userInput, ' ');
 
-	if (userInput == "HELP") {
+	if (uppercase(userInput) == "HELP") {
 		textCommands::help();
+
+	}
+	else if (uppercase(multiString[0]) == "BUY") {
+		/* String is in 3 sections - The command, number of stocks, and the company/number*/
+		multiString[2] = "EggCorp";
+		if (hasNumber(multiString[2])) {
+			std::cout << "tru";
+		}
+		textCommands::buy(strToInt(multiString[1]), multiString[2], user.money);
 	}
 }

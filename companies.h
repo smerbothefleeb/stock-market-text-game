@@ -11,6 +11,7 @@ public:
 
 	void update();
 	bool belowZero();
+	void changeQuantity(int amount, double& userMoney);
 
 	Company(int _companyNumber, std::string _companyName, double _stockValue,
 		int numStocks, int maxStocks) {
