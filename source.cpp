@@ -1,4 +1,6 @@
 #include "variables.h"
+std::vector <Company> companiesList;
+User user(100);
 
 namespace fileStringOperations {
 

@@ -11,3 +11,10 @@ bool Company::belowZero() {
 		return false;
 	}
 }
+/*
+double User::calculateValue() {
+	for (Company _c : companiesList) {
+		
+	}
+}
+*/

@@ -14,7 +14,10 @@
 #include <sstream>
 #include <iomanip>
 #include "companies.h"
-
+#include "user.h"
+/* Extern global vars */
+extern std::vector <Company> companiesList;
+extern User user;
 
 /* Namespace for file/string functions - definitions in source.cpp*/
 namespace fileStringOperations {
