@@ -30,4 +30,5 @@ namespace fileStringOperations {
 
 namespace textCommands {
 	void help();
+	void buy();
 }

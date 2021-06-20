@@ -62,7 +62,8 @@ int main() {
 			padRight(i_company.companyName, 18) << padRight(std::to_string(i_company.companyStockValue), 18) <<
 			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
 	}
-	std::cout << "\n" << std::string(120, '-') << "\n";
+	std::cout << "\n" << std::string(120, '-');
+	textCommands::help();
 	std::cout << "Enter command: ";
 
 
