@@ -79,6 +79,6 @@ int main() {
 		textCommands::buy(strToInt(multiString[1]), multiString[2], user.money);
 	}
 	else if (uppercase(multiString[0]) == "SELL") {
-
+		textCommands::sell(strToInt(multiString[1]), multiString[2], user.money);
 	}
 }

@@ -67,57 +67,94 @@ namespace textCommands {
 	}
 
 	void buy(int numBuy, std::string numName, double userMoney) {
+
 		/* If the call uses the company name */
 		if (fileStringOperations::hasNumber(numName) == false) {
 			for (int i = 0; i < companiesList.size(); i++) {
 				if (fileStringOperations::uppercase(companiesList[i].companyName) == fileStringOperations::uppercase(numName)) {
-					companiesList[i].changeQuantity(numBuy, userMoney);
-					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" + 
-						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
-						companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
-						(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+					if (userMoney >= (numBuy * companiesList[i].companyStockValue)) {
+						companiesList[i].changeQuantity(numBuy, userMoney);
+						std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
+							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
+							companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
+							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+					}
+
+					else {
+						std::cout << "\n-- Cannot buy stocks -- Not enough money! --\n";
+						std::cout << "-- You have: \x9C" << userMoney << " and you need \x9C" << 
+							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n\n";
+					}
+
 				}
 			}
-		}
+		} 
+
+		/* If the call uses the company number */
 		else {
 			for (int i = 0; i < companiesList.size(); i++) {
 				if (companiesList[i].companyNumber == fileStringOperations::strToInt(numName)) {
-					companiesList[i].changeQuantity(numBuy, userMoney);
-					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
-						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
-						companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
-						(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+					if (userMoney >= (numBuy * companiesList[i].companyStockValue)) {
+						companiesList[i].changeQuantity(numBuy, userMoney);
+						std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
+							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
+							companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
+							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+					}
+
+					else {
+						std::cout << "\n-- Cannot buy stocks -- Not enough money! --\n";
+						std::cout << "-- You have: \x9C" << userMoney << " and you need \x9C" <<
+							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n\n";
+					}
 				}
 			}
-
 		}
-
 	}
 
+	/* If the user has enough stocks to sell, sell the required amount */
+
 	void sell(int numSell, std::string numName, double userMoney) {
+
 		/* If the call uses the company name */
 		if (fileStringOperations::hasNumber(numName) == false) {
 			for (int i = 0; i < companiesList.size(); i++) {
 				if (fileStringOperations::uppercase(companiesList[i].companyName) == fileStringOperations::uppercase(numName)) {
-					companiesList[i].changeQuantity(-numSell, userMoney);
-					std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
-						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
-						companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
-						(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+					if (numSell >= companiesList[i].numberOfStocks) {
+						companiesList[i].changeQuantity(-numSell, userMoney);
+						std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
+							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
+							companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
+							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+					}
+
+					else {
+						std::cout << "\n-- Cannot sell stocks -- Not enough stocks to sell! --\n";
+						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n\n";
+					}
+
 				}
 			}
 		}
+
+		/* If the call uses the company number */
 		else {
 			for (int i = 0; i < companiesList.size(); i++) {
 				if (companiesList[i].companyNumber == fileStringOperations::strToInt(numName)) {
-					companiesList[i].changeQuantity(-numSell, userMoney);
-					std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
-						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
-						companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
-						(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+					if (numSell >= companiesList[i].numberOfStocks) {
+						companiesList[i].changeQuantity(-numSell, userMoney);
+						std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
+							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
+							companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
+							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+					}
+
+					else {
+						std::cout << "\n-- Cannot sell stocks -- Not enough stocks to sell! --\n";
+						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n\n";
+					}
 				}
 			}
-
 		}
 	}
 }
