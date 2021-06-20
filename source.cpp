@@ -37,9 +37,9 @@ namespace fileStringOperations
 		return output;
 	}
 
+	/* If the length of the string is less than the desired size, pad with spaces until it is */
 	std::string padRight(std::string str, int size) 
 	{
-		/* If the length of the string is less than the desired size, pad with spaces until it is */
 		if (str.size() < size) 
 		{
 			str = str + std::string(size - str.size(), ' ');

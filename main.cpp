@@ -106,10 +106,7 @@ int main()
 			userTemp << std::to_string(user.money) + "," + std::to_string(user.day);
 			userTemp.close();
 			userData.open("company-data.csv");
-		}
-		else if (uppercase(multiString[0]) == "CASH")
-		{
-			std::cout << user.money;
+			std::cout << "Saved data!\n";
 		}
 	}
 	return 0;
