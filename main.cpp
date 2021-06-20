@@ -72,28 +72,35 @@ int main()
 
 
 	/* Receive user input and invoke relevant function */
-	getline(std::cin, userInput);
-	std::vector<std::string> multiString = separateString(userInput, ' ');
+	while (uppercase(userInput) != "EXIT")
+	{
+		getline(std::cin, userInput);
+		std::vector<std::string> multiString = separateString(userInput, ' ');
 
-	if (uppercase(userInput) == "HELP") 
-	{
-		textCommands::help();
-
-	}
-	else if (uppercase(multiString[0]) == "BUY") 
-	{
-		textCommands::buy(strToInt(multiString[1]), multiString[2], user.money);
-	}
-	else if (uppercase(multiString[0]) == "SELL") 
-	{
-		textCommands::sell(strToInt(multiString[1]), multiString[2], user.money);
-	}
-	else if (uppercase(multiString[0]) == "SAVE")
-	{
-		companiesData.clear();
-		for (Company _c : companiesList) 
+		if (uppercase(userInput) == "HELP")
 		{
-			companiesData << _c.companyName
+			textCommands::help();
+		}
+		else if (uppercase(multiString[0]) == "BUY")
+		{
+			textCommands::buy(strToInt(multiString[1]), multiString[2], user.money);
+		}
+		else if (uppercase(multiString[0]) == "SELL")
+		{
+			textCommands::sell(strToInt(multiString[1]), multiString[2], user.money);
+		}
+		else if (uppercase(multiString[0]) == "SAVE")
+		{
+			companiesData.clear();
+			for (Company _c : companiesList)
+			{
+				companiesData << std::to_string(_c.companyNumber) + "," + _c.companyName + "," +
+					std::to_string(_c.companyStockValue) + "," + std::to_string(_c.numberOfStocks) + "," + std::to_string(_c.maximumStocks);
+			}
+
+			userData.clear();
+			userData << std::to_string(user.money) + "," + std::to_string(user.day);
 		}
 	}
+	return 0;
 }
