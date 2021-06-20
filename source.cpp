@@ -3,11 +3,12 @@ std::vector <Company> companiesList;
 
 namespace fileStringOperations {
 
+	/* Convert string to const char* then int with atoi()*/
 	int strToInt(std::string inputString) {
-		/* Convert string to const char* then int with atoi()*/
 		return std::atoi(inputString.c_str());
 	}
 
+	/* Count the number of lines in a file */
 	int lineCount(std::ifstream inputFile) {
 		int numLine = 0;
 		std::string line = "";
@@ -19,8 +20,8 @@ namespace fileStringOperations {
 		return numLine;
 	}
 
+	/* Parse a delimited string into multiple smaller strings using a given delimiter, then add strings to output vector*/
 	std::vector<std::string> separateString(std::string input, char delimiter) {
-		/* Parse a delimited string into multiple smaller strings using a given delimiter, then add strings to output vector*/
 		std::vector<std::string> output;
 		std::stringstream ss(input);
 		std::string stringSection;
@@ -39,6 +40,7 @@ namespace fileStringOperations {
 		return str;
 	}
 
+	/* Takes a string and returns a capitalised version of it */
 	std::string uppercase(std::string str) {
 		for (int i = 0; i < str.size(); i++) {
 			str[i] = char(toupper((int)str[i]));
@@ -46,8 +48,8 @@ namespace fileStringOperations {
 		return str;
 	}
 
+	/* Checks through a string and tests every digit to find a number*/
 	bool hasNumber(std::string str) {
-		/* Checks through a string and tests every digit to find a number*/
 		for (char const _c : str) {
 			if (std::isdigit(_c) == 0) {
 				return false;
@@ -58,6 +60,7 @@ namespace fileStringOperations {
 }
 
 namespace textCommands {
+	/* List the available commands */
 	void help() {
 		std::cout << "\nList of commands: \n\n" <<
 			" - buy {x} [Company]/[Number] - Buy x quantity of stocks in Company - Use name or number\n" <<
@@ -66,6 +69,7 @@ namespace textCommands {
 			" - skip - Skip the day and move to the next\n\n";
 	}
 
+	/* If the user has enough money, buy the specified number of stocks */
 	void buy(int numBuy, std::string numName, double userMoney) {
 
 		/* If the call uses the company name */
@@ -113,7 +117,6 @@ namespace textCommands {
 	}
 
 	/* If the user has enough stocks to sell, sell the required amount */
-
 	void sell(int numSell, std::string numName, double userMoney) {
 
 		/* If the call uses the company name */
