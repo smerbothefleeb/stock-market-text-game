@@ -6,7 +6,7 @@ public:
 	int stocksHeld;
 	double totalValue;
 
-	double calculateValue();
+	void calculateValue();
 	User(double _money) {
 		money = _money;
 	}
