@@ -70,7 +70,7 @@ namespace textCommands {
 		/* If the call uses the company name */
 		if (fileStringOperations::hasNumber(numName) == false) {
 			for (int i = 0; i < companiesList.size(); i++) {
-				if (companiesList[i].companyName == numName) {
+				if (fileStringOperations::uppercase(companiesList[i].companyName) == fileStringOperations::uppercase(numName)) {
 					companiesList[i].changeQuantity(numBuy, userMoney);
 					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + " at \x9C" <<
 						companiesList[i].companyStockValue << "\nTotal expenditure: \x9C" <<
