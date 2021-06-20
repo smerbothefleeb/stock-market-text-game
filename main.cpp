@@ -12,10 +12,10 @@ int main()
 	srand((unsigned)time(NULL));			
 
 	/* Open files */
-	std::ifstream companiesData("company-data.csv");
+	std::fstream companiesData("company-data.csv");
 	std::ifstream positiveEvents("positive-news-events.csv");
 	std::ifstream negativeEvents("negative-news-events.csv");
-	std::ifstream userData("user-data.csv");
+	std::fstream userData("user-data.csv");
 
 
 	/* Read through files and copy consequences/events/data to vectors*/
@@ -87,5 +87,13 @@ int main()
 	else if (uppercase(multiString[0]) == "SELL") 
 	{
 		textCommands::sell(strToInt(multiString[1]), multiString[2], user.money);
+	}
+	else if (uppercase(multiString[0]) == "SAVE")
+	{
+		companiesData.clear();
+		for (Company _c : companiesList) 
+		{
+			companiesData << _c.companyName
+		}
 	}
 }
