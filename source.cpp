@@ -3,7 +3,6 @@ std::vector <Company> companiesList;
 
 namespace fileStringOperations 
 {
-
 	/* Convert string to const char* then int with atoi()*/
 	int strToInt(std::string inputString) {
 		return std::atoi(inputString.c_str());
@@ -85,7 +84,7 @@ namespace textCommands
 	}
 
 	/* If the user has enough money, buy the specified number of stocks */
-	void buy(int numBuy, std::string numName, double userMoney) 
+	void buy(int numBuy, std::string numName, double &userMoney) 
 	{
 		/* If the call uses the company name */
 		if (fileStringOperations::hasNumber(numName) == false) 
@@ -142,7 +141,7 @@ namespace textCommands
 	}
 
 	/* If the user has enough stocks to sell, sell the required amount */
-	void sell(int numSell, std::string numName, double userMoney) 
+	void sell(int numSell, std::string numName, double &userMoney) 
 	{
 		/* If the call uses the company name */
 		if (fileStringOperations::hasNumber(numName) == false) 

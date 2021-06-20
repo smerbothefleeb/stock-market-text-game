@@ -91,15 +91,25 @@ int main()
 		}
 		else if (uppercase(multiString[0]) == "SAVE")
 		{
-			companiesData.clear();
+			companiesData.close();
+			std::ofstream companyTemp("company-data.csv", std::ios::out | std::ios::trunc);
 			for (Company _c : companiesList)
 			{
-				companiesData << std::to_string(_c.companyNumber) + "," + _c.companyName + "," +
-					std::to_string(_c.companyStockValue) + "," + std::to_string(_c.numberOfStocks) + "," + std::to_string(_c.maximumStocks);
+				companyTemp << std::to_string(_c.companyNumber) + "," + _c.companyName + "," +
+					std::to_string(_c.companyStockValue) + "," + std::to_string(_c.numberOfStocks) + "," + std::to_string(_c.maximumStocks) + "\n";
 			}
+			companyTemp.close();
+			companiesData.open("company-data.csv");
 
-			userData.clear();
-			userData << std::to_string(user.money) + "," + std::to_string(user.day);
+			userData.close();
+			std::ofstream userTemp("user-data.csv", std::ios::out | std::ios::trunc);
+			userTemp << std::to_string(user.money) + "," + std::to_string(user.day);
+			userTemp.close();
+			userData.open("company-data.csv");
+		}
+		else if (uppercase(multiString[0]) == "CASH")
+		{
+			std::cout << user.money;
 		}
 	}
 	return 0;

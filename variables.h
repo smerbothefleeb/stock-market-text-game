@@ -34,7 +34,7 @@ namespace fileStringOperations
 namespace textCommands 
 {
 	void help();
-	void buy(int numBuy, std::string numName, double userMoney);
-	void sell(int numSell, std::string numName, double userMoney);
+	void buy(int numBuy, std::string numName, double &userMoney);
+	void sell(int numSell, std::string numName, double &userMoney);
 }
 
