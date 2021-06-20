@@ -40,6 +40,10 @@ int main() {
 		companiesList.push_back(_new);
 	}
 
+	/* Retrieve any data associated with the user & create a new object of User*/
+	getline(userData, fileOutput);
+	User user((double)strToInt(fileOutput));
+
 	/* List companies and their current values */
 	std::cout << "Companies retrieved from file: \n\n" <<
 		"Number       Name              Stock Value       Stocks Held       Maximum Stocks\n" <<
