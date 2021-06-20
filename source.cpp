@@ -72,11 +72,24 @@ namespace textCommands {
 			for (int i = 0; i < companiesList.size(); i++) {
 				if (fileStringOperations::uppercase(companiesList[i].companyName) == fileStringOperations::uppercase(numName)) {
 					companiesList[i].changeQuantity(numBuy, userMoney);
-					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + " at \x9C" <<
+					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" + 
+						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 						companiesList[i].companyStockValue << "\nTotal expenditure: \x9C" <<
 						(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
 				}
 			}
+		}
+		else {
+			for (int i = 0; i < companiesList.size(); i++) {
+				if (companiesList[i].companyNumber == fileStringOperations::strToInt(numName)) {
+					companiesList[i].changeQuantity(numBuy, userMoney);
+					std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
+						std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
+						companiesList[i].companyStockValue << "\nTotal expenditure: \x9C" <<
+						(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+				}
+			}
+
 		}
 
 	}
