@@ -5,16 +5,20 @@ std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
 std::string fileOutput = "";
 std::string userInput = "";
+bool running = false;
 
 void startGame()
 {
 	std::thread t1(gameLoop);
+	//std::thread t2(backgroundTimer, std::ref(user.money), running);
 
 	t1.join();
+	//t2.join();
 }
 
 void gameLoop()
 {
+	running = true;
 	srand((unsigned)time(NULL));
 
 	/* Open files */
@@ -118,6 +122,7 @@ void gameLoop()
 			std::cout << "-- Unrecognised command! --\n\n";
 		}
 	}
+	running = false;
 }
 
 

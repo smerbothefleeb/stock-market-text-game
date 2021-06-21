@@ -16,10 +16,12 @@
 #include <iomanip>
 #include "companies.h"
 #include "user.h"
+
 /* Extern global vars */
 extern std::vector <Company> companiesList;
 extern void gameLoop();
 extern void startGame();
+extern void backgroundTimer(double &userMoney, bool running);
 extern User user;
 
 /* Namespace for file/string functions - definitions in source.cpp*/
@@ -33,6 +35,7 @@ namespace fileStringOperations
 	 bool hasNumber(std::string str);
 }
 
+/* Namespace for the user-input commands */
 namespace textCommands 
 {
 	void help();
