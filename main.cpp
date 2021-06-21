@@ -6,10 +6,16 @@ std::vector<std::string> lineOutput;
 std::string fileOutput = "";
 std::string userInput = "";
 
-
-int main() 
+void startGame()
 {
-	srand((unsigned)time(NULL));			
+	std::thread t1(gameLoop);
+
+	t1.join();
+}
+
+void gameLoop()
+{
+	srand((unsigned)time(NULL));
 
 	/* Open files */
 	std::fstream companiesData("company-data.csv");
@@ -19,15 +25,15 @@ int main()
 
 
 	/* Read through files and copy consequences/events/data to vectors*/
-	while (getline(positiveEvents, fileOutput)) 
-	{	
+	while (getline(positiveEvents, fileOutput))
+	{
 		lineOutput = separateString(fileOutput, ',');
 		positiveConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
 		positiveNewsEvents.push_back(fileOutput);
 	}
 	lineOutput.clear();
 
-	while (getline(negativeEvents, fileOutput)) 
+	while (getline(negativeEvents, fileOutput))
 	{
 		lineOutput = separateString(fileOutput, ',');
 		negativeConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
@@ -35,7 +41,7 @@ int main()
 	}
 	lineOutput.clear();
 
-	while (getline(companiesData, fileOutput)) 
+	while (getline(companiesData, fileOutput))
 	{
 		/* Line is separated into 5 parts, with each string as the values from each company */
 		/* Then creates a new object of Company using the strings, and adds it to the vector */
@@ -60,7 +66,7 @@ int main()
 		std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
 		std::string(120, '-') << "\n\n";
 
-	for (Company i_company : companiesList) 
+	for (Company i_company : companiesList)
 	{
 		std::cout << "  " << padRight((std::to_string(i_company.companyNumber)), 11) <<
 			padRight(i_company.companyName, 18) << padRight(std::to_string(i_company.companyStockValue), 18) <<
@@ -112,5 +118,11 @@ int main()
 			std::cout << "-- Unrecognised command! --\n\n";
 		}
 	}
+}
+
+
+int main() 
+{
+	startGame();
 	return 0;
 }

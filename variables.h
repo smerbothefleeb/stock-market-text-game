@@ -18,6 +18,8 @@
 #include "user.h"
 /* Extern global vars */
 extern std::vector <Company> companiesList;
+extern void gameLoop();
+extern void startGame();
 extern User user;
 
 /* Namespace for file/string functions - definitions in source.cpp*/
