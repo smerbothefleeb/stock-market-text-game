@@ -21,7 +21,7 @@
 /* Extern global vars */
 extern std::vector <Company> companiesList;
 extern void gameLoop(double& userMoney);
-extern void backgroundTimer(double& userMoney);// , bool running);
+extern void backgroundTimer(double& userMoney);
 extern void redrawOutput();
 extern User user;
 extern bool running;

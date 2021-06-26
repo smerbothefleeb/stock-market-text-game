@@ -72,6 +72,7 @@ void gameLoop(double& userMoney)
 	/* Receive user input and invoke relevant function */
 	while (uppercase(userInput) != "EXIT")
 	{
+		running = true;
 		std::cout << "Enter Command: ";
 		getline(std::cin, userInput);
 		std::vector<std::string> multiString = separateString(userInput, ' ');
@@ -98,6 +99,7 @@ void gameLoop(double& userMoney)
 		}
 	}
 	running = false;
+	return;
 }
 
 

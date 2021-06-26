@@ -243,27 +243,30 @@ void redrawOutput() {
 /* Every 60 seconds, start a new day, with periodic updates of the time */
 void backgroundTimer(double& userDay)
 {
-	while (running)
-	{
 		for (int i = 0; i < 60; i++)
 		{
-			Sleep(1000);
-			switch (i)
-			{
-			case 15:
-				std::cout << "\n45 seconds left in the day\n";
-				break;
-			case 30:
-				std::cout << "30 seconds left in the day\n";
-				break;
-			case 45:
-				std::cout << "15 seconds left in the day\n";
-				break;
-			case 60:
-				userDay += 1;
-				std::cout << "Day: " << userDay << "\n";
-				redrawOutput();
+			if (running) {
+				std::cout << "\n running" + std::to_string(i);
+				Sleep(1000);
+				switch (i)
+				{
+				case 15:
+					std::cout << "\n45 seconds left in the day\n";
+					break;
+				case 30:
+					std::cout << "30 seconds left in the day\n";
+					break;
+				case 45:
+					std::cout << "15 seconds left in the day\n";
+					break;
+				case 60:
+					userDay += 1;
+					std::cout << "Day: " << userDay << "\n";
+					redrawOutput();
+				}
+			}
+			else {
+				return;
 			}
 		}
-	}
 }
