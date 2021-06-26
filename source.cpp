@@ -198,7 +198,8 @@ namespace textCommands
 		}
 	}
 
-	void save(std::fstream &_companyData, std::fstream &_userData) {
+	void save(std::fstream &_companyData, std::fstream &_userData) 
+	{
 		/* Save company data */
 		_companyData.close();
 		std::ofstream companyTemp("company-data.csv", std::ios::out | std::ios::trunc);
@@ -219,11 +220,17 @@ namespace textCommands
 		std::cout << "Saved data!\n";
 	}
 	
+	/* Will be used to skip a day and update the stock values */
+	void skipDay() 
+	{
+		redrawOutput();
+	}
 
 }	
 
 /* Clear window, then list companies and their current values, and print user's money and current day */
-void redrawOutput() {
+void redrawOutput() 
+{
 	system("CLS");
 	using namespace fileStringOperations;
 	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
@@ -245,11 +252,12 @@ void redrawOutput() {
 /* Every 60 seconds, start a new day, with periodic updates of the time */
 void backgroundTimer(double& userDay)
 {
-	while (running) {
+	while (running) 
+	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (running) {
-				std::cout << i << std::endl;
+			if (running) 
+			{
 				Sleep(1000);
 				switch (i)
 				{
@@ -268,7 +276,8 @@ void backgroundTimer(double& userDay)
 					break;
 				}
 			}
-			else {
+			else 
+			{
 				return;
 			}
 		}

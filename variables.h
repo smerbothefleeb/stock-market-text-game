@@ -43,5 +43,6 @@ namespace textCommands
 	void buy(int numBuy, std::string numName, double& userMoney);
 	void sell(int numSell, std::string numName, double& userMoney);
 	void save(std::fstream& _companyData, std::fstream& _userData);
+	void skipDay();
 }
 
