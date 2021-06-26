@@ -83,7 +83,8 @@ namespace textCommands
 			" - buy {x} [Company]/[Number] - Buy x quantity of stocks in Company - Use name or number\n" <<
 			" - sell {x} [Company]/[Number] - Sell x quantity of stocks in Company - Use name or number\n" <<
 			" - save - Save all data to respective files \n" <<
-			" - skip - Skip the day and move to the next\n";
+			" - skip - Skip the day and move to the next\n" <<
+			" - exit - Immediately exit and save \n";
 	}
 
 	/* If the user has enough money, buy the specified number of stocks */
