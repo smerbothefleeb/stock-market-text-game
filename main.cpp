@@ -77,7 +77,12 @@ void gameLoop(double& userMoney)
 		getline(std::cin, userInput);
 		std::vector<std::string> multiString = separateString(userInput, ' ');
 
-		if (uppercase(userInput) == "HELP")
+		if (uppercase(userInput) == "EXIT")
+		{
+			save(companiesData, userData);
+			std::cout << "\n --- Closing! --- \n";
+		}
+		else if (uppercase(userInput) == "HELP")
 		{
 			commandsHelp();
 		}

@@ -246,7 +246,6 @@ void backgroundTimer(double& userDay)
 		for (int i = 0; i < 60; i++)
 		{
 			if (running) {
-				std::cout << "\n running" + std::to_string(i);
 				Sleep(1000);
 				switch (i)
 				{
