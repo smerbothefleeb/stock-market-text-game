@@ -22,6 +22,7 @@
 extern std::vector <Company> companiesList;
 extern void gameLoop(double& userMoney);
 extern void backgroundTimer(double& userMoney);// , bool running);
+extern void redrawOutput();
 extern User user;
 extern bool running;
 
@@ -37,11 +38,11 @@ namespace fileStringOperations
 }
 
 /* Namespace for the user-input commands */
-namespace textCommands 
+namespace textCommands
 {
 	void commandsHelp();
-	void buy(int numBuy, std::string numName, double &userMoney);
-	void sell(int numSell, std::string numName, double &userMoney);
-	void redrawOutput();
+	void buy(int numBuy, std::string numName, double& userMoney);
+	void sell(int numSell, std::string numName, double& userMoney);
+	void save(std::fstream& _companyData, std::fstream& _userData);
 }
 

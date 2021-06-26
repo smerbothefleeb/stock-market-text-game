@@ -37,8 +37,6 @@ void gameLoop(double& userMoney)
 	running = true;
 	srand((unsigned)time(NULL));
 
-
-
 	/* Read through files and copy consequences/events/data to vectors*/
 	while (getline(positiveEvents, fileOutput))
 	{
@@ -92,21 +90,7 @@ void gameLoop(double& userMoney)
 		}
 		else if (uppercase(multiString[0]) == "SAVE")
 		{
-			companiesData.close();
-			std::ofstream companyTemp("company-data.csv", std::ios::out | std::ios::trunc);
-			for (Company _c : companiesList)
-			{
-				companyTemp << std::to_string(_c.companyNumber) + "," + _c.companyName + "," +
-					std::to_string(_c.companyStockValue) + "," + std::to_string(_c.numberOfStocks) + "," + std::to_string(_c.maximumStocks) + "\n";
-			}
-			companyTemp.close();
-			companiesData.open("company-data.csv");
-			userData.close();
-			std::ofstream userTemp("user-data.csv", std::ios::out | std::ios::trunc);
-			userTemp << std::to_string(user.money) + "," + std::to_string(user.day);
-			userTemp.close();
-			userData.open("company-data.csv");
-			std::cout << "Saved data!\n";
+			save(companiesData, userData);
 		}
 		else 
 		{

@@ -197,23 +197,47 @@ namespace textCommands
 			}
 		}
 	}
-	
-	/* List companies and their current values */
-	void redrawOutput() {
-		using namespace fileStringOperations;
-		std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
-			std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
-			std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
-			std::string(120, '-') << "\n";
 
-		for (Company i_company : companiesList)
+	void save(std::fstream &_companyData, std::fstream &_userData) {
+		/* Save company data */
+		_companyData.close();
+		std::ofstream companyTemp("company-data.csv", std::ios::out | std::ios::trunc);
+		for (Company _c : companiesList)
 		{
-			std::cout << "  " << fileStringOperations::padRight((std::to_string(i_company.companyNumber)), 11) <<
-				fileStringOperations::padRight(i_company.companyName, 18) << fileStringOperations::padRight(std::to_string(i_company.companyStockValue), 18) <<
-				padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
+			companyTemp << std::to_string(_c.companyNumber) + "," + _c.companyName + "," +
+				std::to_string(_c.companyStockValue) + "," + std::to_string(_c.numberOfStocks) + "," + std::to_string(_c.maximumStocks) + "\n";
 		}
-		std::cout << "\n" << std::string(120, '-');
+		companyTemp.close();
+		_companyData.open("company-data.csv");
+
+		/* Save user data */
+		_userData.close();
+		std::ofstream userTemp("user-data.csv", std::ios::out | std::ios::trunc);
+		userTemp << std::to_string(user.money) + "," + std::to_string(user.day);
+		userTemp.close();
+		_userData.open("company-data.csv");
+		std::cout << "Saved data!\n";
 	}
+	
+
+}	
+
+/* List companies and their current values */
+void redrawOutput() {
+	GetStdHandle(STD_OUTPUT_HANDLE);
+	using namespace fileStringOperations;
+	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
+		std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
+		std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
+		std::string(120, '-') << "\n";
+
+	for (Company i_company : companiesList)
+	{
+		std::cout << "  " << fileStringOperations::padRight((std::to_string(i_company.companyNumber)), 11) <<
+			fileStringOperations::padRight(i_company.companyName, 18) << fileStringOperations::padRight(std::to_string(i_company.companyStockValue), 18) <<
+			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
+	}
+	std::cout << "\n" << std::string(120, '-');
 }
 
 /* Every 60 seconds, start a new day, with periodic updates of the time */
@@ -238,6 +262,7 @@ void backgroundTimer(double& userDay)
 			case 60:
 				userDay += 1;
 				std::cout << "Day: " << userDay << "\n";
+				redrawOutput();
 			}
 		}
 	}
