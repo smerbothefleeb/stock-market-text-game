@@ -151,7 +151,7 @@ namespace textCommands
 			{
 				if (fileStringOperations::uppercase(companiesList[i].companyName) == fileStringOperations::uppercase(numName)) 
 				{
-					if (numSell >= companiesList[i].numberOfStocks) 
+					if (numSell <= companiesList[i].numberOfStocks) 
 					{
 						companiesList[i].changeQuantity(-numSell, userMoney);
 						std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
@@ -177,7 +177,7 @@ namespace textCommands
 			{
 				if (companiesList[i].companyNumber == fileStringOperations::strToInt(numName))
 				{
-					if (numSell >= companiesList[i].numberOfStocks) 
+					if (numSell <= companiesList[i].numberOfStocks) 
 					{
 						companiesList[i].changeQuantity(-numSell, userMoney);
 						std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
