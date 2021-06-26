@@ -2,6 +2,8 @@
 std::vector <Company> companiesList;
 bool running = true;
 
+
+
 namespace fileStringOperations 
 {
 	/* Convert string to const char* then int with atoi()*/
@@ -23,7 +25,7 @@ namespace fileStringOperations
 		}
 		return numLine;
 	}
-
+	
 	/* Parse a delimited string into multiple smaller strings using a given delimiter, then add strings to output vector*/
 	std::vector<std::string> separateString(std::string input, char delimiter) 
 	{
@@ -75,7 +77,7 @@ namespace fileStringOperations
 namespace textCommands 
 {
 	/* List the available commands */
-	void help() 
+	void commandsHelp()
 	{
 		std::cout << "List of commands: \n\n" <<
 			" - buy {x} [Company]/[Number] - Buy x quantity of stocks in Company - Use name or number\n" <<
@@ -195,10 +197,27 @@ namespace textCommands
 			}
 		}
 	}
+	
+	/* List companies and their current values */
+	void redrawOutput() {
+		using namespace fileStringOperations;
+		std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
+			std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
+			std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
+			std::string(120, '-') << "\n";
+
+		for (Company i_company : companiesList)
+		{
+			std::cout << "  " << fileStringOperations::padRight((std::to_string(i_company.companyNumber)), 11) <<
+				fileStringOperations::padRight(i_company.companyName, 18) << fileStringOperations::padRight(std::to_string(i_company.companyStockValue), 18) <<
+				padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
+		}
+		std::cout << "\n" << std::string(120, '-');
+	}
 }
 
 /* Every 60 seconds, start a new day, with periodic updates of the time */
-void backgroundTimer(double& userDay)//, bool running)
+void backgroundTimer(double& userDay)
 {
 	while (running)
 	{

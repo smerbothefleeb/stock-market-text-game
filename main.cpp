@@ -1,5 +1,6 @@
 #include "variables.h"
 using namespace fileStringOperations;
+using namespace textCommands;
 std::vector<std::string> positiveNewsEvents, negativeNewsEvents;
 std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
@@ -63,22 +64,10 @@ void gameLoop(double& userMoney)
 		companiesList.push_back(_new);
 	}
 	lineOutput.clear();
-
-	/* List companies and their current values */
-	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
-		std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
-		std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
-		std::string(120, '-') << "\n";
-
-	for (Company i_company : companiesList)
-	{
-		std::cout << "  " << padRight((std::to_string(i_company.companyNumber)), 11) <<
-			padRight(i_company.companyName, 18) << padRight(std::to_string(i_company.companyStockValue), 18) <<
-			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
-	}
-	std::cout << "\n" << std::string(120, '-');
-	textCommands::help();
-
+	
+	/* Clear and redraw output window, then show help for commands again */
+	redrawOutput();
+	commandsHelp();
 
 	/* Receive user input and invoke relevant function */
 	while (uppercase(userInput) != "EXIT")
@@ -89,15 +78,15 @@ void gameLoop(double& userMoney)
 
 		if (uppercase(userInput) == "HELP")
 		{
-			textCommands::help();
+			commandsHelp();
 		}
 		else if (uppercase(multiString[0]) == "BUY")
 		{
-			textCommands::buy(strToInt(multiString[1]), multiString[2], user.money);
+			buy(strToInt(multiString[1]), multiString[2], user.money);
 		}
 		else if (uppercase(multiString[0]) == "SELL")
 		{
-			textCommands::sell(strToInt(multiString[1]), multiString[2], user.money);
+			sell(strToInt(multiString[1]), multiString[2], user.money);
 		}
 		else if (uppercase(multiString[0]) == "SAVE")
 		{
