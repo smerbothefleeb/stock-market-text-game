@@ -222,9 +222,9 @@ namespace textCommands
 
 }	
 
-/* List companies and their current values */
+/* Clear window, then list companies and their current values, and print user's money and current day */
 void redrawOutput() {
-	GetStdHandle(STD_OUTPUT_HANDLE);
+	system("CLS");
 	using namespace fileStringOperations;
 	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
 		std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
@@ -238,6 +238,7 @@ void redrawOutput() {
 			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
 	}
 	std::cout << "\n" << std::string(120, '-');
+	textCommands::commandsHelp();
 }
 
 /* Every 60 seconds, start a new day, with periodic updates of the time */
@@ -249,6 +250,9 @@ void backgroundTimer(double& userDay)
 				Sleep(1000);
 				switch (i)
 				{
+				case 3:
+					redrawOutput();
+					break;
 				case 15:
 					std::cout << "\n45 seconds left in the day\n";
 					break;
@@ -261,7 +265,7 @@ void backgroundTimer(double& userDay)
 				case 60:
 					userDay += 1;
 					std::cout << "Day: " << userDay << "\n";
-					redrawOutput();
+					break;
 				}
 			}
 			else {

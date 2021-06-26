@@ -106,5 +106,3 @@ void gameLoop(double& userMoney)
 	running = false;
 	return;
 }
-
-
