@@ -14,21 +14,23 @@ std::ifstream positiveEvents("positive-news-events.csv");
 std::ifstream negativeEvents("negative-news-events.csv");
 std::fstream userData("user-data.csv");
 
-void startGame()
-{
+int main()
+{	
 	/* Retrieve any data associated with the user & create a new object of User */
 	getline(userData, fileOutput);
 	lineOutput = separateString(fileOutput, ',');
 	user.money = (double)strToInt(lineOutput[0]);
 	user.day = strToInt(lineOutput[1]);
 	user.calculateValue();
-	
+
 	std::thread t1(gameLoop, std::ref(user.money));
 	std::thread t2(backgroundTimer, std::ref(user.money));
 
 	t1.join();
 	t2.join();
+	return 0;
 }
+
 
 void gameLoop(double& userMoney)
 {
@@ -115,8 +117,3 @@ void gameLoop(double& userMoney)
 }
 
 
-int main() 
-{
-	startGame();
-	return 0;
-}
