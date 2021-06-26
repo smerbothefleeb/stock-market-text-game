@@ -5,26 +5,36 @@ std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
 std::string fileOutput = "";
 std::string userInput = "";
+User user(0, 0);
+
+/* Open files */
+std::fstream companiesData("company-data.csv");
+std::ifstream positiveEvents("positive-news-events.csv");
+std::ifstream negativeEvents("negative-news-events.csv");
+std::fstream userData("user-data.csv");
 
 void startGame()
 {
-	std::thread t1(gameLoop);
+
+	/* Retrieve any data associated with the user & create a new object of User */
+	getline(userData, fileOutput);
+	lineOutput = separateString(fileOutput, ',');
+	user.money = (double)strToInt(lineOutput[0]);
+	user.day = strToInt(lineOutput[1]);
+		user.calculateValue();
+	
+	std::thread t1(gameLoop, std::ref(user.money));
 	std::thread t2(backgroundTimer, std::ref(user.money));//;, //running);
 
 	t1.join();
 	t2.join();
 }
 
-void gameLoop()
+void gameLoop(double& userMoney)
 {
 	running = true;
 	srand((unsigned)time(NULL));
 
-	/* Open files */
-	std::fstream companiesData("company-data.csv");
-	std::ifstream positiveEvents("positive-news-events.csv");
-	std::ifstream negativeEvents("negative-news-events.csv");
-	std::fstream userData("user-data.csv");
 
 
 	/* Read through files and copy consequences/events/data to vectors*/
@@ -55,13 +65,6 @@ void gameLoop()
 		companiesList.push_back(_new);
 	}
 	lineOutput.clear();
-
-
-	/* Retrieve any data associated with the user & create a new object of User */
-	getline(userData, fileOutput);
-	lineOutput = separateString(fileOutput, ',');
-	User user((double)strToInt(lineOutput[0]), strToInt(lineOutput[1]));
-	user.calculateValue();
 
 	/* List companies and their current values */
 	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
@@ -117,9 +120,11 @@ void gameLoop()
 			userData.open("company-data.csv");
 			std::cout << "Saved data!\n\n";
 		}
-		else {
+		else 
+		{
 			std::cout << "-- Unrecognised command! --\n\n";
 		}
+		std::cout << "Money from gameLoop thread: " + std::to_string(user.money);
 	}
 	running = false;
 }

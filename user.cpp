@@ -1,5 +1,4 @@
 #include "variables.h"
-User user(0, 0);
 
 /* Calculate the cumulative value of all the user's stocks */
 void User::calculateValue() 
@@ -20,6 +19,7 @@ void backgroundTimer(double& userMoney)//, bool running)
 		{
 			Sleep(1000);
 			userMoney += 1;
+			std::cout << "\nDay: " << userMoney << "\n";
 			switch (i)
 			{
 			case 15:
