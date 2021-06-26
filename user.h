@@ -9,9 +9,4 @@ public:
 	double totalValue = 0;
 
 	void calculateValue();
-	User(double _money, int _day)
-	{
-		money = _money;
-	}
-
 };

@@ -5,7 +5,7 @@ std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
 std::string fileOutput = "";
 std::string userInput = "";
-User user(0, 0);
+User user;
 
 /* Open files */
 std::fstream companiesData("company-data.csv");
@@ -15,13 +15,12 @@ std::fstream userData("user-data.csv");
 
 void startGame()
 {
-
 	/* Retrieve any data associated with the user & create a new object of User */
 	getline(userData, fileOutput);
 	lineOutput = separateString(fileOutput, ',');
 	user.money = (double)strToInt(lineOutput[0]);
 	user.day = strToInt(lineOutput[1]);
-		user.calculateValue();
+	user.calculateValue();
 	
 	std::thread t1(gameLoop, std::ref(user.money));
 	std::thread t2(backgroundTimer, std::ref(user.money));//;, //running);
