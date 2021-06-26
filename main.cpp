@@ -23,7 +23,7 @@ void startGame()
 	user.calculateValue();
 	
 	std::thread t1(gameLoop, std::ref(user.money));
-	std::thread t2(backgroundTimer, std::ref(user.money));//;, //running);
+	std::thread t2(backgroundTimer, std::ref(user.money));
 
 	t1.join();
 	t2.join();
@@ -58,7 +58,6 @@ void gameLoop(double& userMoney)
 		/* Line is separated into 5 parts, with each string as the values from each company */
 		/* Then creates a new object of Company using the strings, and adds it to the vector */
 		/* CompanyNumber, CompanyName, StockValue, NumberOfStocks, MaximumStocks */
-
 		lineOutput = separateString(fileOutput, ',');
 		Company _new(strToInt(lineOutput[0]), lineOutput[1], strToInt(lineOutput[2]), strToInt(lineOutput[3]), strToInt(lineOutput[4]));
 		companiesList.push_back(_new);
@@ -69,7 +68,7 @@ void gameLoop(double& userMoney)
 	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
 		std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
 		std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
-		std::string(120, '-') << "\n\n";
+		std::string(120, '-') << "\n";
 
 	for (Company i_company : companiesList)
 	{
@@ -86,7 +85,6 @@ void gameLoop(double& userMoney)
 	{
 		std::cout << "Enter Command: ";
 		getline(std::cin, userInput);
-		std::cout << "\n";
 		std::vector<std::string> multiString = separateString(userInput, ' ');
 
 		if (uppercase(userInput) == "HELP")
@@ -117,13 +115,12 @@ void gameLoop(double& userMoney)
 			userTemp << std::to_string(user.money) + "," + std::to_string(user.day);
 			userTemp.close();
 			userData.open("company-data.csv");
-			std::cout << "Saved data!\n\n";
+			std::cout << "Saved data!\n";
 		}
 		else 
 		{
-			std::cout << "-- Unrecognised command! --\n\n";
+			std::cout << "-- Unrecognised command! --\n";
 		}
-		std::cout << "Money from gameLoop thread: " + std::to_string(user.money);
 	}
 	running = false;
 }

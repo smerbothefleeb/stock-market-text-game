@@ -77,11 +77,11 @@ namespace textCommands
 	/* List the available commands */
 	void help() 
 	{
-		std::cout << "\nList of commands: \n\n" <<
+		std::cout << "List of commands: \n\n" <<
 			" - buy {x} [Company]/[Number] - Buy x quantity of stocks in Company - Use name or number\n" <<
 			" - sell {x} [Company]/[Number] - Sell x quantity of stocks in Company - Use name or number\n" <<
 			" - save - Save all data to respective files \n" <<
-			" - skip - Skip the day and move to the next\n\n";
+			" - skip - Skip the day and move to the next\n";
 	}
 
 	/* If the user has enough money, buy the specified number of stocks */
@@ -100,14 +100,14 @@ namespace textCommands
 						std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
 							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 							companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
-							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n";
 					}
 
 					else 
 					{
-						std::cout << "\n-- Cannot buy stocks -- Not enough money! --\n";
+						std::cout << "-- Cannot buy stocks -- Not enough money! --\n";
 						std::cout << "-- You have: \x9C" << userMoney << " and you need \x9C" << 
-							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n\n";
+							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n";
 					}
 
 				}
@@ -127,14 +127,14 @@ namespace textCommands
 						std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
 							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 							companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
-							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n\n";
+							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n";
 					}
 
 					else 
 					{
-						std::cout << "\n-- Cannot buy stocks -- Not enough money! --\n";
+						std::cout << "-- Cannot buy stocks -- Not enough money! --\n";
 						std::cout << "-- You have: \x9C" << userMoney << " and you need \x9C" <<
-							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n\n";
+							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n";
 					}
 				}
 			}
@@ -157,13 +157,13 @@ namespace textCommands
 						std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
 							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 							companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
-							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n";
 					}
 
 					else
 					{
-						std::cout << "\n-- Cannot sell stocks -- Not enough stocks to sell! --\n";
-						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n\n";
+						std::cout << "-- Cannot sell stocks -- Not enough stocks to sell! --\n";
+						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n";
 					}
 
 				}
@@ -183,13 +183,13 @@ namespace textCommands
 						std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
 							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 							companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
-							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n\n";
+							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n";
 					}
 
 					else 
 					{
-						std::cout << "\n-- Cannot sell stocks -- Not enough stocks to sell! --\n";
-						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n\n";
+						std::cout << "-- Cannot sell stocks -- Not enough stocks to sell! --\n";
+						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n";
 					}
 				}
 			}
@@ -202,24 +202,24 @@ void backgroundTimer(double& userDay)//, bool running)
 {
 	while (running)
 	{
-	for (int i = 0; i < 60; i++)
-	{
-		Sleep(1000);
-		switch (i)
+		for (int i = 0; i < 60; i++)
 		{
-		case 15:
-			std::cout << "\n45 seconds left in the day\n";
-			break;
-		case 30:
-			std::cout << "\n30 seconds left in the day\n";
-			break;
-		case 45:
-			std::cout << "\n15 seconds left in the day\n";
-			break;
-		case 60:
-			userDay += 1;
-			std::cout << "\nDay: " << userDay << "\n";
+			Sleep(1000);
+			switch (i)
+			{
+			case 15:
+				std::cout << "\n45 seconds left in the day\n";
+				break;
+			case 30:
+				std::cout << "30 seconds left in the day\n";
+				break;
+			case 45:
+				std::cout << "15 seconds left in the day\n";
+				break;
+			case 60:
+				userDay += 1;
+				std::cout << "Day: " << userDay << "\n";
+			}
 		}
-	}
 	}
 }
