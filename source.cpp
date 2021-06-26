@@ -1,6 +1,6 @@
 #include "variables.h"
 std::vector <Company> companiesList;
-bool running = false;
+bool running = true;
 
 namespace fileStringOperations 
 {
