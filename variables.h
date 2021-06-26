@@ -14,6 +14,7 @@
 #include <regex>
 #include <sstream>
 #include <iomanip>
+#include <mutex>
 #include "companies.h"
 #include "user.h"
 
@@ -21,8 +22,9 @@
 extern std::vector <Company> companiesList;
 extern void gameLoop();
 extern void startGame();
-extern void backgroundTimer(double &userMoney, bool running);
+extern void backgroundTimer(double& userMoney);// , bool running);
 extern User user;
+extern bool running;
 
 /* Namespace for file/string functions - definitions in source.cpp*/
 namespace fileStringOperations 

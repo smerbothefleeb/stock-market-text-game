@@ -5,15 +5,14 @@ std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
 std::string fileOutput = "";
 std::string userInput = "";
-bool running = false;
 
 void startGame()
 {
 	std::thread t1(gameLoop);
-	//std::thread t2(backgroundTimer, std::ref(user.money), running);
+	std::thread t2(backgroundTimer, std::ref(user.money));//;, //running);
 
 	t1.join();
-	//t2.join();
+	t2.join();
 }
 
 void gameLoop()
