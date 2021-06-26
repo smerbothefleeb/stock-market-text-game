@@ -67,20 +67,22 @@ void gameLoop(double& userMoney)
 	
 	/* Clear and redraw output window, then show help for commands again */
 	redrawOutput();
-	commandsHelp();
 
 	/* Receive user input and invoke relevant function */
 	while (uppercase(userInput) != "EXIT")
 	{
+		std::vector<std::string> multiString;
 		running = true;
-		std::cout << "Enter Command: ";
 		getline(std::cin, userInput);
-		std::vector<std::string> multiString = separateString(userInput, ' ');
+		if (!(userInput == ""))
+		{
+			multiString = separateString(userInput, ' ');
+		}
 
 		if (uppercase(userInput) == "EXIT")
 		{
 			save(companiesData, userData);
-			std::cout << "\n --- Closing! --- \n";
+			std::cout << "\n--- Closing! --- \n";
 		}
 		else if (uppercase(userInput) == "HELP")
 		{

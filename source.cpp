@@ -239,20 +239,20 @@ void redrawOutput() {
 	}
 	std::cout << "\n" << std::string(120, '-');
 	textCommands::commandsHelp();
+	std::cout << "Enter Command: ";
 }
 
 /* Every 60 seconds, start a new day, with periodic updates of the time */
 void backgroundTimer(double& userDay)
 {
-		for (int i = 0; i < 60; i++)
+	while (running) {
+		for (int i = 0; i < 4; i++)
 		{
 			if (running) {
+				std::cout << i << std::endl;
 				Sleep(1000);
 				switch (i)
 				{
-				case 3:
-					redrawOutput();
-					break;
 				case 15:
 					std::cout << "\n45 seconds left in the day\n";
 					break;
@@ -272,4 +272,5 @@ void backgroundTimer(double& userDay)
 				return;
 			}
 		}
+	}
 }

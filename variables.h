@@ -11,7 +11,6 @@
 #include <sstream>
 #include <cstdlib>
 #include <fstream>
-#include <regex>
 #include <sstream>
 #include <iomanip>
 #include <mutex>
