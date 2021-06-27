@@ -29,7 +29,7 @@ int main()
 	user.calculateValue();
 
 	std::thread t1(gameLoop, std::ref(user.money));
-	std::thread t2(backgroundTimer, std::ref(user.money));
+	std::thread t2(backgroundTimer, std::ref(user.day));
 
 	t1.join();
 	t2.join();
