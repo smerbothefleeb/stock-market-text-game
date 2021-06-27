@@ -1,6 +1,7 @@
 #include "variables.h"
 using namespace fileStringOperations;
 using namespace textCommands;
+
 std::vector<std::string> positiveNewsEvents, negativeNewsEvents;
 std::vector <int> positiveConsequences, negativeConsequences;
 std::vector<std::string> lineOutput;
@@ -9,13 +10,17 @@ std::string userInput = "";
 User user;
 
 /* Open files */
-std::fstream companiesData("company-data.csv");
-std::ifstream positiveEvents("positive-news-events.csv");
-std::ifstream negativeEvents("negative-news-events.csv");
-std::fstream userData("user-data.csv");
+std::fstream companiesData;
+std::fstream positiveEvents;
+std::fstream negativeEvents;
+std::fstream userData;
 
 int main()
-{	
+{
+	openFile(companiesData, "company-data.csv");
+	openFile(positiveEvents, "positive-news-events.csv");
+	openFile(negativeEvents, "negative-news-events.csv");
+	openFile(userData, "user-data.csv");
 	/* Retrieve any data associated with the user & create a new object of User */
 	getline(userData, fileOutput);
 	lineOutput = separateString(fileOutput, ',');

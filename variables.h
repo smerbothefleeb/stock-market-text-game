@@ -14,6 +14,7 @@
 #include <sstream>
 #include <iomanip>
 #include <mutex>
+#include <sys/stat.h>
 #include "companies.h"
 #include "user.h"
 
@@ -25,6 +26,11 @@ extern void redrawOutput();
 extern User user;
 extern bool running;
 
+extern std::fstream companiesData;
+extern std::fstream positiveEvents;
+extern std::fstream negativeEvents;
+extern std::fstream userData;
+
 /* Namespace for file/string functions - definitions in source.cpp*/
 namespace fileStringOperations 
 {
@@ -34,6 +40,8 @@ namespace fileStringOperations
 	 std::string padRight(std::string str, int size);
 	 std::string uppercase(std::string str);
 	 bool hasNumber(std::string str);
+	 void openFile(std::fstream& file , const std::string name);
+	 bool fileExists(const std::string name);
 }
 
 /* Namespace for the user-input commands */

@@ -63,7 +63,7 @@ namespace fileStringOperations
 	/* Checks through a string and tests every digit to find a number*/
 	bool hasNumber(std::string str) 
 	{
-		for (char const _c : str) 
+		for (const char _c : str) 
 		{
 			if (std::isdigit(_c) == 0) 
 			{
@@ -71,6 +71,33 @@ namespace fileStringOperations
 			}
 		}
 		return true;
+	}
+
+	bool fileExists(const std::string name) 
+	{
+		std::fstream file(name.c_str());
+		return file.is_open();
+	}
+
+	void openFile(std::fstream& file, const std::string name)
+	{
+		if (!(fileExists(name))) 
+		{
+			std::cout << "File: " << name << " does not exist. Creating..." << std::endl;
+			std::fstream temp(name.c_str(), std::ios::out);
+			if (temp.is_open())
+			{
+				std::cout << "File created!" << std::endl;
+			}
+			else
+			{
+				std::cout << "File creation failed!" << std::endl;
+			}
+		}
+		else
+		{
+			file.open(name.c_str());// , std::ios::out);
+		}
 	}
 }
 
@@ -255,7 +282,7 @@ void backgroundTimer(double& userDay)
 {
 	while (running) 
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i <= 60; i++)
 		{
 			if (running) 
 			{
