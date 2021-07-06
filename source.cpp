@@ -52,7 +52,7 @@ namespace fileStringOperations
 	}
 
 	/* Takes a string and returns a capitalised version of it */
-	std::string uppercase(std::string str) 
+	std::string uppercase(std::string& str) 
 	{
 		for (int i = 0; i < str.size(); i++) 
 		{
@@ -80,7 +80,7 @@ namespace fileStringOperations
 		return file.is_open();
 	}
 
-	void openFile(std::fstream& file, const std::string name)
+	bool openFile(std::fstream& file, const std::string name)
 	{
 		if (!(fileExists(name))) 
 		{
@@ -94,10 +94,12 @@ namespace fileStringOperations
 			{
 				std::cout << "File creation failed!" << std::endl;
 			}
+			return false;
 		}
 		else
 		{
-			file.open(name.c_str());// , std::ios::out);
+			file.open(name.c_str());
+			return true;
 		}
 	}
 }

@@ -17,10 +17,13 @@ std::fstream userData;
 
 int main()
 {
+	/* Open all files */
+	
 	openFile(companiesData, "company-data.csv");
 	openFile(positiveEvents, "positive-news-events.csv");
 	openFile(negativeEvents, "negative-news-events.csv");
 	openFile(userData, "user-data.csv");
+
 	/* Retrieve any data associated with the user & create a new object of User */
 	getline(userData, fileOutput);
 	lineOutput = separateString(fileOutput, ',');
@@ -37,7 +40,7 @@ int main()
 }
 
 
-void gameLoop(double& userMoney)
+void gameLoop(double userMoney)
 {
 	running = true;
 	srand((unsigned)time(NULL));
@@ -47,7 +50,7 @@ void gameLoop(double& userMoney)
 	{
 		lineOutput = separateString(fileOutput, ',');
 		positiveConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
-		//positiveNewsEvents.push_back(fileOutput);
+		//positiveNewsEvents.push_back(lineOutput[1]);
 	}
 	lineOutput.clear();
 
@@ -55,7 +58,7 @@ void gameLoop(double& userMoney)
 	{
 		lineOutput = separateString(fileOutput, ',');
 		negativeConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
-		//negativeNewsEvents.push_back(fileOutput);
+		//negativeNewsEvents.push_back(lineOutput[1]);
 	}
 	lineOutput.clear();
 
@@ -69,8 +72,6 @@ void gameLoop(double& userMoney)
 		companiesList.push_back(_new);
 	}
 	lineOutput.clear();
-	
-	/* Clear and redraw output window, then show help for commands again */
 	redrawOutput();
 
 	/* Receive user input and invoke relevant function */

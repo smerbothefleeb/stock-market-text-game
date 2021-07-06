@@ -20,7 +20,7 @@
 
 /* Extern global vars */
 extern std::vector <Company> companiesList;
-extern void gameLoop(double& userMoney);
+extern void gameLoop(double userMoney);
 extern void backgroundTimer(double userMoney);
 extern void redrawOutput();
 extern User user;
@@ -39,9 +39,9 @@ namespace fileStringOperations
 	 int lineCount(std::ifstream inputFile);
 	 std::vector<std::string> separateString(std::string input, char delimiter);
 	 std::string padRight(std::string str, int size);
-	 std::string uppercase(std::string str);
+	 std::string uppercase(std::string& str);
 	 bool hasNumber(std::string str);
-	 void openFile(std::fstream& file , const std::string name);
+	 bool openFile(std::fstream& file , const std::string name);
 	 bool fileExists(const std::string name);
 }
 
