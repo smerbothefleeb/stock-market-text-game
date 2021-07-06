@@ -10,7 +10,6 @@ public:
 	float incomePerStock;
 	int maximumStocks;
 
-	void update();
 	bool belowZero();
 	void changeQuantity(int amount, double& userMoney);
 

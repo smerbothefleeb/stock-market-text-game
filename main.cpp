@@ -47,7 +47,7 @@ void gameLoop(double& userMoney)
 	{
 		lineOutput = separateString(fileOutput, ',');
 		positiveConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
-		positiveNewsEvents.push_back(fileOutput);
+		//positiveNewsEvents.push_back(fileOutput);
 	}
 	lineOutput.clear();
 
@@ -55,7 +55,7 @@ void gameLoop(double& userMoney)
 	{
 		lineOutput = separateString(fileOutput, ',');
 		negativeConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
-		negativeNewsEvents.push_back(fileOutput);
+		//negativeNewsEvents.push_back(fileOutput);
 	}
 	lineOutput.clear();
 

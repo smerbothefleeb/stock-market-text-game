@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include <thread>
 #include <time.h>
-#include <string>																																							//default c++ header files
+#include <string>
 #include <vector>
 #include <ctime>
 #include <stdio.h>
@@ -21,10 +21,11 @@
 /* Extern global vars */
 extern std::vector <Company> companiesList;
 extern void gameLoop(double& userMoney);
-extern void backgroundTimer(double& userMoney);
+extern void backgroundTimer(double userMoney);
 extern void redrawOutput();
 extern User user;
 extern bool running;
+extern std::mutex accessLock;
 
 extern std::fstream companiesData;
 extern std::fstream positiveEvents;

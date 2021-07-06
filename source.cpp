@@ -1,6 +1,7 @@
 #include "variables.h"
 std::vector <Company> companiesList;
 bool running = true;
+std::mutex accessLock;
 
 
 
@@ -278,7 +279,7 @@ void redrawOutput()
 }
 
 /* Every 60 seconds, start a new day, with periodic updates of the time */
-void backgroundTimer(double& userDay)
+void backgroundTimer(double userDay)
 {
 	while (running) 
 	{
@@ -287,6 +288,7 @@ void backgroundTimer(double& userDay)
 			if (running) 
 			{
 				Sleep(1000);
+				accessLock.lock();
 				switch (i)
 				{
 				case 15:
@@ -303,6 +305,7 @@ void backgroundTimer(double& userDay)
 					std::cout << "Day: " << userDay << "\n";
 					break;
 				}
+				accessLock.unlock();
 			}
 			else 
 			{
