@@ -21,8 +21,7 @@ int main()
 	openFile(companiesData, "company-data.csv", defaultCompany); companiesData.open("company-data.csv", std::ios::in | std::ios::out);
 	openFile(positiveEvents, "positive-news-events.csv");
 	openFile(negativeEvents, "negative-news-events.csv");
-	openFile(userData, "user-data.csv");
-	openFile(userData, "user-data.csv", defaultCompany); userData.open("company-data.csv", std::ios::in | std::ios::out);
+	openFile(userData, "user-data.csv", defaultUser); userData.open("user-data.csv", std::ios::in | std::ios::out);
 
 	/* Retrieve any data associated with the user & create a new object of User */
 	getline(userData, fileOutput);
