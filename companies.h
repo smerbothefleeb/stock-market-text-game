@@ -1,5 +1,6 @@
 #pragma once
 extern const std::string defaultCompany;
+extern const std::string defaultUser;
 class Company 
 {
 public:

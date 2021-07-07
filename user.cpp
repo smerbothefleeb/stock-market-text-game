@@ -1,4 +1,5 @@
 #include "variables.h"
+const std::string defaultUser = "100,1";
 
 /* Calculate the cumulative value of all the user's stocks */
 void User::calculateValue() 
