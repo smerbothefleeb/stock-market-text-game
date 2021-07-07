@@ -50,8 +50,8 @@ namespace fileStringOperations
 namespace textCommands
 {
 	void commandsHelp();
-	void buy(int numBuy, std::string numName, double& userMoney);
-	void sell(int numSell, std::string numName, double& userMoney);
+	void buy(const int numBuy, std::string numName, double& userMoney);
+	void sell(const int numSell, std::string numName, double& userMoney);
 	void save(std::fstream& _companyData, std::fstream& _userData);
 	void skipDay();
 }

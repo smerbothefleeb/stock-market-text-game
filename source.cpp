@@ -114,7 +114,7 @@ namespace textCommands
 	}
 
 	/* If the user has enough money, buy the specified number of stocks */
-	void buy(int numBuy, std::string numName, double &userMoney) 
+	void buy(const int numBuy, std::string numName, double &userMoney) 
 	{
 		/* If the call uses the company name */
 		if (fileStringOperations::hasNumber(numName) == false) 
@@ -129,14 +129,14 @@ namespace textCommands
 						std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
 							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 							companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
-							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n";
+							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << std::endl;
 					}
 
 					else 
 					{
 						std::cout << "-- Cannot buy stocks -- Not enough money! --\n";
-						std::cout << "-- You have: \x9C" << userMoney << " and you need \x9C" << 
-							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n";
+						std::cout << "-- You have: \x9C" << userMoney << " and you need \x9C" <<
+							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --" << std::endl;
 					}
 
 				}
@@ -156,14 +156,14 @@ namespace textCommands
 						std::cout << numBuy << " stocks bought of " + companiesList[i].companyName + "(" +
 							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 							companiesList[i].companyStockValue << " each\nTotal expenditure: \x9C" <<
-							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << "\n";
+							(companiesList[i].companyStockValue * numBuy) << ". Remaining balance: \x9C" << userMoney << std::endl;
 					}
 
 					else 
 					{
 						std::cout << "-- Cannot buy stocks -- Not enough money! --\n";
 						std::cout << "-- You have: \x9C" << userMoney << " and you need \x9C" <<
-							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --\n";
+							(numBuy * companiesList[i].companyStockValue) - userMoney << " more. --" << std::endl;
 					}
 				}
 			}
@@ -171,7 +171,7 @@ namespace textCommands
 	}
 
 	/* If the user has enough stocks to sell, sell the required amount */
-	void sell(int numSell, std::string numName, double &userMoney) 
+	void sell(const int numSell, std::string numName, double &userMoney) 
 	{
 		/* If the call uses the company name */
 		if (fileStringOperations::hasNumber(numName) == false) 
@@ -186,13 +186,13 @@ namespace textCommands
 						std::cout << numSell << " stocks sold of " + companiesList[i].companyName + "(" +
 							std::to_string(companiesList[i].companyNumber) + ") at \x9C" <<
 							companiesList[i].companyStockValue << " each\nTotal earnings: \x9C" <<
-							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << "\n";
+							(companiesList[i].companyStockValue * numSell) << ". New balance: \x9C" << userMoney << std::endl;
 					}
 
 					else
 					{
-						std::cout << "-- Cannot sell stocks -- Not enough stocks to sell! --\n";
-						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n";
+						std::cout << "-- Cannot sell stocks -- Not enough stocks to sell! --\n" <<
+						"-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --" << std::endl;
 					}
 
 				}
@@ -217,8 +217,8 @@ namespace textCommands
 
 					else 
 					{
-						std::cout << "-- Cannot sell stocks -- Not enough stocks to sell! --\n";
-						std::cout << "-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --\n";
+						std::cout << "-- Cannot sell stocks -- Not enough stocks to sell! --\n" <<
+						"-- You have: " << companiesList[i].numberOfStocks << " and you need " << numSell - companiesList[i].numberOfStocks << " more. --" << std::endl;
 					}
 				}
 			}
@@ -244,7 +244,7 @@ namespace textCommands
 		userTemp << std::to_string(user.money) + "," + std::to_string(user.day);
 		userTemp.close();
 		_userData.open("company-data.csv");
-		std::cout << "Saved data!\n";
+		std::cout << "Saved data!" << std::endl;
 	}
 	
 	/* Will be used to skip a day and update the stock values */
@@ -263,13 +263,13 @@ void redrawOutput()
 	std::cout << "Number       Name              Stock Value       Stocks Held       Maximum Stocks" <<
 		std::string(10, ' ') + "Money: " + std::to_string(user.money) + "\n" <<
 		std::string(91, ' ') + "Day: " + std::to_string(user.day) + "\n" <<
-		std::string(120, '-') << "\n";
+		std::string(120, '-') << std::endl;
 
 	for (Company i_company : companiesList)
 	{
 		std::cout << "  " << fileStringOperations::padRight((std::to_string(i_company.companyNumber)), 11) <<
 			fileStringOperations::padRight(i_company.companyName, 18) << fileStringOperations::padRight(std::to_string(i_company.companyStockValue), 18) <<
-			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << "\n";
+			padRight(std::to_string(i_company.numberOfStocks), 18) << i_company.maximumStocks << std::endl;
 	}
 	std::cout << "\n" << std::string(120, '-');
 	textCommands::commandsHelp();
@@ -286,24 +286,24 @@ void backgroundTimer(double userDay)
 			if (running) 
 			{
 				Sleep(1000);
-				accessLock.lock();
+				//accessLock.lock();
 				switch (i)
 				{
 				case 15:
-					std::cout << "\n45 seconds left in the day\n";
+					std::cout << "\n45 seconds left in the day" << std::endl;
 					break;
 				case 30:
-					std::cout << "30 seconds left in the day\n";
+					std::cout << "30 seconds left in the day" << std::endl;
 					break;
 				case 45:
-					std::cout << "15 seconds left in the day\n";
+					std::cout << "15 seconds left in the day" << std::endl;
 					break;
 				case 60:
 					userDay += 1;
-					std::cout << "Day: " << userDay << "\n";
+					std::cout << "Day: " << userDay << std::endl;
 					break;
 				}
-				accessLock.unlock();
+				//accessLock.unlock();
 			}
 			else 
 			{

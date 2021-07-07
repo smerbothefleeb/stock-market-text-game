@@ -19,9 +19,9 @@ int main()
 {
 	/* Open all files */
 	openFile(companiesData, "company-data.csv", defaultCompany); companiesData.open("company-data.csv", std::ios::in | std::ios::out);
+	openFile(userData, "user-data.csv", defaultUser); userData.open("user-data.csv", std::ios::in | std::ios::out);
 	openFile(positiveEvents, "positive-news-events.csv");
 	openFile(negativeEvents, "negative-news-events.csv");
-	openFile(userData, "user-data.csv", defaultUser); userData.open("user-data.csv", std::ios::in | std::ios::out);
 
 	/* Retrieve any data associated with the user & create a new object of User */
 	getline(userData, fileOutput);
@@ -87,7 +87,7 @@ void gameLoop(double userMoney)
 		if (uppercase(userInput) == "EXIT")
 		{
 			save(companiesData, userData);
-			std::cout << "\n--- Closing! --- \n";
+			std::cout << "\n--- Closing! ---" << std::endl;
 		}
 		else if (uppercase(userInput) == "HELP")
 		{
@@ -107,7 +107,7 @@ void gameLoop(double userMoney)
 		}
 		else 
 		{
-			std::cout << "-- Unrecognised command! --\n";
+			std::cout << "-- Unrecognised command! --" << std::endl;
 		}
 	}
 	running = false;
