@@ -18,8 +18,7 @@ std::fstream userData;
 int main()
 {
 	/* Open all files */
-	
-	openFile(companiesData, "company-data.csv");
+	openFile(companiesData, "company-data.csv", defaultCompany); companiesData.open("company-data.csv", std::ios::in | std::ios::out);
 	openFile(positiveEvents, "positive-news-events.csv");
 	openFile(negativeEvents, "negative-news-events.csv");
 	openFile(userData, "user-data.csv");
@@ -50,7 +49,7 @@ void gameLoop(double userMoney)
 	{
 		lineOutput = separateString(fileOutput, ',');
 		positiveConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
-		//positiveNewsEvents.push_back(lineOutput[1]);
+		positiveNewsEvents.push_back(lineOutput[1]);
 	}
 	lineOutput.clear();
 
@@ -58,7 +57,7 @@ void gameLoop(double userMoney)
 	{
 		lineOutput = separateString(fileOutput, ',');
 		negativeConsequences.push_back((int)std::atoi(lineOutput[0].c_str()));
-		//negativeNewsEvents.push_back(lineOutput[1]);
+		negativeNewsEvents.push_back(lineOutput[1]);
 	}
 	lineOutput.clear();
 

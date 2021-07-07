@@ -32,6 +32,7 @@ extern std::fstream positiveEvents;
 extern std::fstream negativeEvents;
 extern std::fstream userData;
 
+
 /* Namespace for file/string functions - definitions in source.cpp*/
 namespace fileStringOperations 
 {
@@ -41,7 +42,7 @@ namespace fileStringOperations
 	 std::string padRight(std::string str, int size);
 	 std::string uppercase(std::string& str);
 	 bool hasNumber(std::string str);
-	 bool openFile(std::fstream& file , const std::string name);
+	 void openFile(std::fstream& file , const std::string name, const std::string defaultData = "");
 	 bool fileExists(const std::string name);
 }
 

@@ -80,7 +80,7 @@ namespace fileStringOperations
 		return file.is_open();
 	}
 
-	bool openFile(std::fstream& file, const std::string name)
+	void openFile(std::fstream& file, const std::string name, const std::string defaultData)
 	{
 		if (!(fileExists(name))) 
 		{
@@ -89,17 +89,13 @@ namespace fileStringOperations
 			if (temp.is_open())
 			{
 				std::cout << "File created!" << std::endl;
+				temp.write(defaultData.c_str(), defaultData.size());
+				temp.close();
 			}
 			else
 			{
 				std::cout << "File creation failed!" << std::endl;
 			}
-			return false;
-		}
-		else
-		{
-			file.open(name.c_str());
-			return true;
 		}
 	}
 }

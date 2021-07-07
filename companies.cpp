@@ -1,5 +1,5 @@
 #include "variables.h"
-
+const std::string defaultCompany = "1, EggCorp, 10, 0, 1000";
 /* Check if a certain stock value is less than 0 */
 bool Company::belowZero() 
 {

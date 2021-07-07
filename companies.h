@@ -1,5 +1,5 @@
 #pragma once
-
+extern const std::string defaultCompany;
 class Company 
 {
 public:
@@ -9,6 +9,7 @@ public:
 	int numberOfStocks;
 	float incomePerStock;
 	int maximumStocks;
+	
 
 	bool belowZero();
 	void changeQuantity(int amount, double& userMoney);
